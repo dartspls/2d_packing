@@ -12,6 +12,22 @@ public class Rectangle {
         pos = new Point(x, y);
     }
 
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getX() {
+        return pos.getX();
+    }
+
+    public int getY() {
+        return pos.getY();
+    }
+
     /**
      * Get the coordinates of the specified corner
      * @param c Corner number, 0 bottom left, 1 bottom right, 2 top right, 3 top left

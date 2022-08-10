@@ -3,13 +3,19 @@ import java.io.FileReader;
 import java.util.ArrayList;
 
 /**
- * assn1
+ * 2D Packing problem assignment for COMPX556
+ * Daniel Shepherd
+ * 2022
  */
 public class assn1 {
 
     public static void main(String[] args) {
         if (args.length < 1) {
             System.out.println("No args");
+            System.out.print("Expected file input format below:" + // java can't do multiline strings??
+                             "\n<id>,<width>,<height>" +
+                             "\n..." +
+                             "\n<area sum of objects>\n");
             return;
         }
 
