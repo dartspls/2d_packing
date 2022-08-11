@@ -40,7 +40,7 @@ public class assn1 {
 
             Collections.sort(rects, new Comparator<Rectangle>() {
                 public int compare(Rectangle lhs, Rectangle rhs) {
-                    return lhs.getWidth() - rhs.getWidth();
+                    return rhs.getWidth() - lhs.getWidth();
                 }
             });
 
