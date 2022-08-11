@@ -32,13 +32,15 @@ public class assn1 {
                     break;
                 }
 
-                rects.add(new Rectangle(Integer.parseInt(parts[0]), 0, 0, Integer.parseInt(parts[1]), Integer.parseInt(parts[2])));
+                rects.add(new Rectangle(Integer.parseInt(parts[0]), Integer.parseInt(parts[1]), Integer.parseInt(parts[2])));
             }
-
             reader.close();
 
             // at this point we probably have an array list of rectangles
             rects.stream().forEach(System.out::println);
+            Rectangle[] res = new Rectangle[rects.size()];
+            rects.toArray(res);
+            System.out.println("Score: " + BottomLeft.place(res));
         } catch (Exception e) {
             e.printStackTrace();
         }

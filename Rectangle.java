@@ -5,10 +5,14 @@ public class Rectangle {
     private int height;
     private Point pos;
 
-    public Rectangle(int id, int x, int y, int width, int height) {
+    public Rectangle(int id, int width, int height) {
         this.id = id;
         this.width = width;
         this.height = height;
+        pos = new Point(0, 0);
+    }
+
+    public void place(int x, int y) {
         pos = new Point(x, y);
     }
 
@@ -28,24 +32,8 @@ public class Rectangle {
         return pos.getY();
     }
 
-    /**
-     * Get the coordinates of the specified corner
-     * @param c Corner number, 0 bottom left, 1 bottom right, 2 top right, 3 top left
-     * @return Point with (x,y) coordinates of the specified corner
-     */
-    public Point getCorner(int c) {
-        switch (c) {
-            case 0:
-                return pos;
-            case 1:
-                return new Point(pos.getX() + width, pos.getY());
-            case 2:
-                return new Point(pos.getX() + width, pos.getY() + height);
-            case 3:
-                return new Point(pos.getX(), pos.getY() + height);
-            default:
-                return pos;
-        }
+    public void move(int dx, int dy) {
+        pos.move(dx, dy);
     }
 
     /**
