@@ -1,6 +1,8 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 /**
  * 2D Packing problem assignment for COMPX556
@@ -34,10 +36,16 @@ public class assn1 {
 
                 rects.add(new Rectangle(Integer.parseInt(parts[0]), Integer.parseInt(parts[1]), Integer.parseInt(parts[2])));
             }
-            reader.close();
+            reader.close();            
 
-            // at this point we probably have an array list of rectangles
+            Collections.sort(rects, new Comparator<Rectangle>() {
+                public int compare(Rectangle lhs, Rectangle rhs) {
+                    return lhs.getWidth() - rhs.getWidth();
+                }
+            });
+
             rects.stream().forEach(System.out::println);
+
             Rectangle[] res = new Rectangle[rects.size()];
             rects.toArray(res);
             System.out.println("Score: " + BottomLeft.place(res));
