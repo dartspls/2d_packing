@@ -1,0 +1,20 @@
+place object in top right
+locked in place = false
+while new object NOT locked in place
+    can move down = true
+    can move left = true
+    while new object can move down
+        can move down = move down
+    end while
+
+    while new object can move left
+        can move left = move left
+    end while
+
+    locked in place = locked
+end while
+
+if height of new object > current max height
+    current max height <- height of new object
+end if
+
