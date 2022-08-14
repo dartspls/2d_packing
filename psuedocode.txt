@@ -72,10 +72,15 @@ swap:
 
 Things to do for Tabu search:
 Keep track of overall best solution in case we move away from it to escape local optima
-Record tabu on move: is this just the move done to reach the new solution? I think so
+Record tabu on move: is this just the move done to reach the new solution? Yes
 
 Move swap and rotate to one contiguous method to account for tabus disallowing some permutations.
 
 Tabus disallow same move type, rotates cannot be rotated but can be swapped.
 Swaps can be rotated but not swapped.
 Should also test out disallowing any move of piece used in move
+
+Notes on tabus:
+Still create solutions that are illegal, do not allow moves unless Tabu S < Best S
+
+When local optima reached: keep picking best solution available, even if worse than current.

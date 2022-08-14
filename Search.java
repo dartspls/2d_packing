@@ -2,48 +2,52 @@ import java.util.Random;
 
 public class Search {
     Random rng = new Random();
-    public void performSearch(Rectangle[] pieces) {
+
+    public void performSearch(Rectangle[] pieces, int maxIterations) {
         shuffle(pieces);
-        Solution bestSol = BottomLeft.place(pieces);
-        boolean improvementMade = true;
+
+        Solution bestSol; // best solution encountered so far
+
+        Solution currentSol = BottomLeft.place(pieces); // current solution
+        bestSol = currentSol;
         int iterations = 0;
-        while(improvementMade) {
-            improvementMade = false;
+        while (iterations < maxIterations) {
             // generate neighbourhood
-            Neighbourhood n = new Neighbourhood(bestSol);
-            
-            iterations ++;
+            Neighbourhood n = new Neighbourhood(currentSol);
+            Solution bestInNeighbourhood = n.next();
+            iterations++;
             while (n.hasNext()) {
-               
-                // evaluate bestSol vs S
+                // evaluate current solution vs S
                 Solution s = n.next();
-                // System.out.println(bestSol.getSize() + " " + s.getSize());
-                if(bestSol.getValue() > s.getValue()) {
-                    System.err.println("improvement");
-                    bestSol = s;
-                    improvementMade = true;
+
+                if (bestInNeighbourhood.getValue() > s.getValue()) {
+                    bestInNeighbourhood = s;
                 }
-                
             }
-            if(iterations >= 10000) {
-                break;
+
+            currentSol = bestInNeighbourhood; // move to best solution in neighbourhood
+            // TODO: record tabu
+
+            // check if we found the new best solution overall
+            if (bestSol.getValue() > currentSol.getValue()) {
+                bestSol = currentSol;
+                System.err.println("improvement");
             }
-            
         }
         // stopped making improvements
         System.out.println("Num iterations till local optima found: " + iterations);
-        System.out.println("Optimal solution found: " + bestSol.getValue() + "\nID W H X Y");
-        bestSol.print();
+        System.out.println("Optimal solution found: " + currentSol.getValue() + "\nID W H X Y");
+        currentSol.print();
     }
 
     private void shuffle(Rectangle[] pieces) {
-        for (int i = 0; i < pieces.length / 2; i ++) {
+        for (int i = 0; i < pieces.length / 2; i++) {
             int randIndex = rng.nextInt(pieces.length);
             Rectangle temp = pieces[randIndex];
             pieces[randIndex] = pieces[i];
             pieces[i] = temp;
 
-            if(randIndex % 2 == 0) {
+            if (randIndex % 2 == 0) {
                 pieces[i].rotate();
             }
         }

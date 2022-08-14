@@ -10,8 +10,8 @@ import java.util.ArrayList;
 public class assn1 {
 
     public static void main(String[] args) {
-        if (args.length < 1) {
-            System.out.println("No args");
+        if (args.length < 2) {
+            System.out.println("Usage: <filename> <iteration count>");
             System.out.print("Expected file input format below:" + // java can't do multiline strings??
                              "\n<id>,<width>,<height>" +
                              "\n..." +
@@ -43,7 +43,7 @@ public class assn1 {
             //System.out.println("Score: " + BottomLeft.place(res).getValue());
             System.err.println("Local search");
             System.out.println(args[0]);
-            new Search().performSearch(res);
+            new Search().performSearch(res, Integer.parseInt(args[1]));
         } catch (Exception e) {
             e.printStackTrace();
         }
