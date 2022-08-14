@@ -32,7 +32,7 @@ public class Search {
         }
         // stopped making improvements
         System.out.println("Num iterations till local optima found: " + iterations);
-        System.out.println("Optimal solution found: " + bestSol.getValue());
+        System.out.println("Optimal solution found: " + bestSol.getValue() + "\nID W H X Y");
         bestSol.print();
     }
 
@@ -42,6 +42,10 @@ public class Search {
             Rectangle temp = pieces[randIndex];
             pieces[randIndex] = pieces[i];
             pieces[i] = temp;
+
+            if(randIndex % 2 == 0) {
+                pieces[i].rotate();
+            }
         }
     }
 }

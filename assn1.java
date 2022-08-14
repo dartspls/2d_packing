@@ -37,11 +37,12 @@ public class assn1 {
             reader.close();
 
             // at this point we probably have an array list of rectangles
-            rects.stream().forEach(System.out::println);
+            //rects.stream().forEach(System.out::println);
             Rectangle[] res = new Rectangle[rects.size()];
             rects.toArray(res);
-            System.out.println("Score: " + BottomLeft.place(res).getValue());
-            System.err.println("\n\n\nLocal search");
+            //System.out.println("Score: " + BottomLeft.place(res).getValue());
+            System.err.println("Local search");
+            System.out.println(args[0]);
             new Search().performSearch(res);
         } catch (Exception e) {
             e.printStackTrace();
