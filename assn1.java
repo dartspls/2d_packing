@@ -40,7 +40,9 @@ public class assn1 {
             rects.stream().forEach(System.out::println);
             Rectangle[] res = new Rectangle[rects.size()];
             rects.toArray(res);
-            System.out.println("Score: " + BottomLeft.place(res));
+            System.out.println("Score: " + BottomLeft.place(res).getValue());
+            System.err.println("\n\n\nLocal search");
+            new Search().performSearch(res);
         } catch (Exception e) {
             e.printStackTrace();
         }

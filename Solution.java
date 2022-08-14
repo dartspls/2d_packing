@@ -34,4 +34,8 @@ public class Solution {
     public Rectangle[] getPieces() {
         return pieces;
     }
+
+    public int getSize() {
+        return pieces.length;
+    }
 }

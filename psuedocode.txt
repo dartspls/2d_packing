@@ -30,10 +30,10 @@ B
 c
 d
 Neightbourhood N(S) has size 10
-A a a a B c d a a a
-B b B B a B B c d B
-c c C c c a c B c d
-d d d D d d a d B c
+A a a a  B c d a a a
+B b B B  a B B c d B
+c c C c  c a c B c d
+d d d D  d d a d B c
 
 Size = n + sum of 1 to n-1 where n is number of items in solution
 simplifies to sum of numbers 1 to n
@@ -42,3 +42,30 @@ n = 4
 
 n = 200
 200 + (1 + 2 + 3 + ... + 199) = 20100
+
+
+
+
+Search:
+
+Generate initial solution S
+Improvement made = true
+while(improvement made):
+    improvement made = false
+    Generate neighbourhood N(S)
+    Evaluate all S in N(S) keeping track of best S
+    if S better than best S:
+        improvement made = true
+        set best S to S
+    endif
+end while
+
+swap:
+    for i = 0, i < len - 1
+        for j = i + 1, j < len
+            swap A[i] with A[j]
+            j ++
+        endfor
+        i ++
+    endfor
+    

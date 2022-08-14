@@ -1,6 +1,7 @@
 public class BottomLeft {
     private static final int WIDTH = 100;
-    public static int place(Rectangle[] incommingPieces) {
+    
+    public static Solution place(Rectangle[] incommingPieces) {
         Rectangle[] placed = new Rectangle[incommingPieces.length];
         int height = 0; // current height of placed blocks. New blocks placed at height + rect.height
         int curRectangle = 0; // index for rectangle currently being placed
@@ -35,7 +36,8 @@ public class BottomLeft {
             }
             curRectangle++;
         }
-        return height;
+        Solution result = new Solution(placed, height);
+        return result;
     }
 
     private static boolean tryMove(Rectangle[] pieces, int rIndex, int x, int y) {
