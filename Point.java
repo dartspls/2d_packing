@@ -24,13 +24,11 @@ public class Point {
         return y;
     }
 
-    /**
-     * Move the point coordinates by specified amount
-     * @param dx X move offset
-     * @param dy Y move offset
-     */
-    public void move(int dx, int dy) {
-        x += dx;
-        y += dy;
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
     }
 }

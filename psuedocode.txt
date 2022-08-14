@@ -84,3 +84,19 @@ Notes on tabus:
 Still create solutions that are illegal, do not allow moves unless Tabu S < Best S
 
 When local optima reached: keep picking best solution available, even if worse than current.
+
+
+
+collision checking is horribly innefficient.
+new approach:
+set nearest object below to 0
+find rectangle below cur item that overlaps cur item:
+    if overlapping item pos + height > nearest:
+        nearest becomes overlappting item y + height
+set cur item Y to nearest Y
+
+set nearest object to left to 0
+find rectangle to left of cur item that overlaps cur item:
+    if overlapping item pos + width > nearest:
+        nearest becomes overlappting item x + width
+set cur item X to nearest X

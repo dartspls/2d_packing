@@ -32,8 +32,16 @@ public class Rectangle {
         return pos.getY();
     }
 
-    public void move(int dx, int dy) {
-        pos.move(dx, dy);
+    public int getId() {
+        return id;
+    }
+
+    public void setX(int x) {
+        pos.setX(x);
+    }
+
+    public void setY(int y) {
+        pos.setY(y);
     }
 
     /**
@@ -46,6 +54,7 @@ public class Rectangle {
     }
 
     public String toString() {
-        return id + " " + width + " " + height + " " + pos.getX() + " " + pos.getY();
+        // return id + " " + width + " " + height + " " + pos.getX() + " " + pos.getY();
+        return id + " " + pos.getX() + " " + pos.getY() + " " + width + " " + height;
     }
 }

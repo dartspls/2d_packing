@@ -1,5 +1,6 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.sql.Time;
 import java.util.ArrayList;
 
 /**
@@ -36,14 +37,17 @@ public class assn1 {
             }
             reader.close();
 
+            
             // at this point we probably have an array list of rectangles
             //rects.stream().forEach(System.out::println);
             Rectangle[] res = new Rectangle[rects.size()];
             rects.toArray(res);
             //System.out.println("Score: " + BottomLeft.place(res).getValue());
-            System.err.println("Local search");
+            System.err.println("Tabu search");
             System.out.println(args[0]);
+            long start = System.currentTimeMillis();
             new Search().performSearch(res, Integer.parseInt(args[1]));
+            System.out.println((System.currentTimeMillis() - start) / 1000);
         } catch (Exception e) {
             e.printStackTrace();
         }
